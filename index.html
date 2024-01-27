@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Salsa&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            width: 100%;
+            display: grid;
+            place-items: center;
+            background: #333;
+        }
+        .container{
+            height: 440px;
+            width: 300px;
+            box-shadow: inset 0px 0px 8px #444;
+            border-radius: 8px ;
+            padding: 10px ;
+        }
+        input{
+            height: 50px;
+            width: 100%;
+            text-align: right;
+            font-size: 35px;
+            border-radius: 8px;
+            padding: 0px 10px;
+            background: transparent;
+            outline: none;
+            color: rgb(194, 194, 3);
+        }
+        button{
+            height: 60px;
+            width: 60px;
+            margin-top: 5px;
+            margin-left: 3px;
+            font-size: 25px ;
+            border-radius: 10px;
+            border: none;
+            background: transparent;
+            box-shadow: inset 0px 0px 10px #111;
+            color: gray;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+        }
+        .BU{
+            margin-top: 1px;
+            margin-left: 7px;
+        }
+        #ac{
+            color: rgb(192, 0, 0);
+        }
+        #del{
+            color: green;
+        }
+        #equ{
+            background: rgb(133, 133, 6);
+            color: #111;
+         
+        }
+        .operator{
+            color: rgb(164, 164, 3);
+        }
+        .dev{
+            height: 40px;
+            width: 100%;
+            display: grid;
+            place-items: center;
+            font-family: 'Roboto', sans-serif;
+            font-family: 'Salsa', cursive;
+            color:rgb(32, 127, 32);
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" placeholder="0.0" class="inputs">
+        <div class="BU">
+        <button id="ac">AC</button>
+         <button id="del">DEL</button>
+         <button class="operator">%</button>
+         <button class="operator">/</button>
+     </div>
+        <div class="BU">
+        <button>7</button>
+         <button>8</button>
+         <button>9</button>
+         <button class="operator">+</button>
+     </div>
+        <div class="BU">
+        <button>4</button>
+         <button>5</button>
+         <button>6</button>
+         <button class="operator">-</button>
+     </div>
+        <div class="BU">
+        <button>1</button>
+         <button>2</button>
+         <button>3</button>
+         <button class="operator">*</button>
+     </div>
+        <div class="BU">
+        <button>00</button>
+         <button>0</button>
+         <button>.</button>
+         <button id="equ">=</button>
+     </div>
+     <div class="dev"> 
+        <h4>Developed By -  Indrajeet kumar</h4>
+     </div>
+    </div>
+    <script>
+        let buttons = document.querySelectorAll('button')
+let string= "";
+Array.from(buttons).forEach(button => {
+    button.addEventListener('click',(e) => {
+    if(e.target.innerHTML == '='){
+        string = eval(string);
+        document.querySelector('input').value =string;
+ 
+    }
+    else if(e.target.innerHTML == 'AC'){
+       string = "";
+       document.querySelector('input').value =string;
+    }
+    else if(e.target.innerHTML == 'DEL'){
+        string = string.substring(0, string.length-1);
+        document.querySelector('input').value =string;
+
+    }
+    else{
+     console.log(e.target)
+     string = string + e.target.innerHTML;
+     document.querySelector('input').value =string;
+    }
+
+    }) 
+})
+    </script>
+</body>
+</html>
